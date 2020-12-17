@@ -1,18 +1,9 @@
-def read_lines(filename):
-    with open(filename, 'r') as f:
-        try:
-            for line in f:
-                yield line
-        except FileNotFoundError:
-            print('no file!')
-        finally:
-            f.close()
-
+from utility.read_file import ReadFile
 
 def part_one():
     passwords = {}
     true_count = 0
-    for line in read_lines('input.txt'):
+    for line in ReadFile.read_lines('input.txt'):
         print('----')
         rule, password = line.split(':')
         password = password.split(' ')[1].split('\n')[0]
