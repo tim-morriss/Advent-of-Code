@@ -13,8 +13,8 @@ def part_one():
         print("letter: %s min: %s max: %s" % (letter, min, max))
         count = 0
         for char in password:
-            count += 1
-
+            if char == letter:
+                count += 1
         if count < int(min) or count > int(max):
             passwords[password] = False
         else:
@@ -25,7 +25,7 @@ def part_one():
 
 def part_two():
     valid_count = 0
-    for line in read_lines('input.txt'):
+    for line in ReadFile.read_lines('input.txt'):
         # print('----')
         rule, password = line.split(':')
         password = password.split(' ')[1].split('\n')[0]
@@ -46,5 +46,5 @@ def part_two():
     return valid_count
 
 
-# print(part_one())
-print(part_two())
+print(part_one())
+# print(part_two())
