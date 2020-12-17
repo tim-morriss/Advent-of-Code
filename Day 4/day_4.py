@@ -47,7 +47,7 @@ def part_two():
             else:
                 # print("Invalid! entries: %s" % (json.dumps(entries, indent=4)))
                 continue
-        return valid_counter
+        return valid_counter - 1
 
 
 # print(part_one())
