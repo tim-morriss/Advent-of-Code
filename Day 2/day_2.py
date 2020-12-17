@@ -1,29 +1,20 @@
-def read_lines(filename):
-    with open(filename, 'r') as f:
-        try:
-            for line in f:
-                yield line
-        except FileNotFoundError:
-            print('no file!')
-        finally:
-            f.close()
-
+from utility.read_file import ReadFile
 
 def part_one():
     passwords = {}
     true_count = 0
-    for line in read_lines('input.txt'):
-        print('----')
+    for line in ReadFile.read_lines('input.txt'):
+        # print('----')
         rule, password = line.split(':')
         password = password.split(' ')[1].split('\n')[0]
-        print(password)
+        # print(password)
         min, max = rule.split(' ')[0].split("-")
         letter = rule.split(":")[0].split(' ')[1]
-        print("letter: %s min: %s max: %s" % (letter, min, max))
+        # print("letter: %s min: %s max: %s" % (letter, min, max))
         count = 0
         for char in password:
-            count += 1
-
+            if char == letter:
+                count += 1
         if count < int(min) or count > int(max):
             passwords[password] = False
         else:
@@ -34,7 +25,7 @@ def part_one():
 
 def part_two():
     valid_count = 0
-    for line in read_lines('input.txt'):
+    for line in ReadFile.read_lines('input.txt'):
         # print('----')
         rule, password = line.split(':')
         password = password.split(' ')[1].split('\n')[0]
@@ -55,5 +46,5 @@ def part_two():
     return valid_count
 
 
-# print(part_one())
-print(part_two())
+print("Part 1: %s" % part_one())
+print("Part 2: %s" % part_two())
