@@ -36,4 +36,20 @@ def day_5_part_one():
     return total
 
 
+def day_5_part_two():
+    product_list = []
+    total = 0
+    for line in ReadFile.read_lines('day_5_input.txt'):
+        row = line[:-4]
+        row_final = upper_lower((0, 127), row)
+        # print(row_final)
+        column = line[-4:]
+        column_final = upper_lower((0, 7), column)
+        # print(column_final)
+        product = (row_final * 8) + column_final
+        product_list.append(product)
+    return sorted(set(range(11, 851)).difference(product_list))
+
+
 print(day_5_part_one())
+print(day_5_part_two())
